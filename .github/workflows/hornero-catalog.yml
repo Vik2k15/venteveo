@@ -1,0 +1,51 @@
+name: Actualizar Catálogo Hornero Store
+
+on:
+  release:
+    types: [published, edited, deleted]
+  push:
+    branches: [main, master]
+    paths:
+      - 'apks/*.apk'
+      - 'overrides.json'
+      - '.github/workflows/hornero-catalog.yml'
+      - '.github/scripts/generate_catalog.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Preparar Python y aapt2
+        run: |
+          if [ -d "${ANDROID_HOME:-}/build-tools" ] && find "${ANDROID_HOME}/build-tools" -name aapt2 | grep -q aapt2; then
+            echo "aapt2 ya disponible en ANDROID_HOME"
+          else
+            sudo apt-get update -qq && sudo apt-get install -y -qq aapt
+          fi
+
+      - name: Generar apps.json e íconos desde APKs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 .github/scripts/generate_catalog.py
+
+      - name: Publicar cambios en apps.json e icons/
+        run: |
+          git config user.name "Hornero Catalog Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add apps.json icons/
+          if git diff --cached --quiet; then
+            echo "Sin cambios en el catálogo."
+          else
+            git commit -m "Actualizar catálogo Hornero Store [skip ci]"
+            git push
+          fi
