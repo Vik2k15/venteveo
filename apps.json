@@ -2,6 +2,72 @@
   "storeName": "Hornero Store",
   "apps": [
     {
+      "id": "app.netmirror.netmirrornew",
+      "packageName": "app.netmirror.netmirrornew",
+      "name": "Netflix",
+      "versionName": "9.81.0",
+      "versionCode": 1,
+      "category": "TV Apps",
+      "description": "Aplicación Netflix lista para TV Box.",
+      "changelog": "",
+      "icon": "icons/app.netmirror.netmirrornew.png",
+      "apkUrl": "https://github.com/Vik2k15/venteveo/releases/download/netmir/Netflix.Premium.v9.81.0.apk",
+      "sha256": "e7f80e4df132be093f3658941d3c94a31ba568cd1694af24771ae372dbe4595d",
+      "sizeBytes": 52289281,
+      "minSdk": 24,
+      "supportedAbis": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86",
+        "x86_64"
+      ],
+      "publishedAt": "2026-11-17T20:22:06Z",
+      "releaseTag": "netmir",
+      "pinned": false,
+      "variants": [
+        {
+          "abi": "universal",
+          "url": "https://github.com/Vik2k15/venteveo/releases/download/netmir/Netflix.Premium.v9.81.0.apk",
+          "sha256": "e7f80e4df132be093f3658941d3c94a31ba568cd1694af24771ae372dbe4595d",
+          "sizeBytes": 52289281,
+          "minSdk": 24
+        }
+      ]
+    },
+    {
+      "id": "com.android.mgstxNF",
+      "packageName": "com.android.mgstxNF",
+      "name": "Xuper Tv NF",
+      "versionName": "4.35.1",
+      "versionCode": 43501,
+      "category": "TV Apps",
+      "description": "Aplicación Xuper Tv NF lista para TV Box.",
+      "changelog": "",
+      "icon": "icons/com.android.mgstxNF.png",
+      "apkUrl": "https://github.com/Vik2k15/venteveo/releases/download/Hornerin/XuperTv-NF-v4.35.1-ModByNF.apk",
+      "sha256": "0b76f3891d858fa55b9ad6fffef4f47a4cdeee910f036d6b3322287130b9b333",
+      "sizeBytes": 51374730,
+      "minSdk": 19,
+      "supportedAbis": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86",
+        "x86_64"
+      ],
+      "publishedAt": "2026-11-17T20:20:29Z",
+      "releaseTag": "Hornerin",
+      "pinned": false,
+      "variants": [
+        {
+          "abi": "universal",
+          "url": "https://github.com/Vik2k15/venteveo/releases/download/Hornerin/XuperTv-NF-v4.35.1-ModByNF.apk",
+          "sha256": "0b76f3891d858fa55b9ad6fffef4f47a4cdeee910f036d6b3322287130b9b333",
+          "sizeBytes": 51374730,
+          "minSdk": 19
+        }
+      ]
+    },
+    {
       "id": "com.example.maglinktv.net",
       "packageName": "com.example.maglinktv.net",
       "name": "MagLink Flow TV",
