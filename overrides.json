@@ -1,0 +1,11 @@
+{
+  "ignorePackages": [],
+  "apps": {
+    "com.hornero.tvstore": {
+      "name": "Hornero Store",
+      "category": "Tienda",
+      "description": "Tienda oficial para actualizar y reinstalar apps en el TV Box sin complicaciones.",
+      "pinned": true
+    }
+  }
+}
