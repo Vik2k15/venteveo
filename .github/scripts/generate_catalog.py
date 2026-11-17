@@ -64,7 +64,7 @@ def parse_badging(tool_kind: str, tool_path: str, apk_path: Path) -> dict:
     )
     app_name = label_match.group(1).strip() if label_match else apk_path.stem
 
-    min_sdk_match = re.search(r"sdkVersion:'(\d+)'", out)
+    min_sdk_match = re.search(r"(?:minSdkVersion|sdkVersion):'(\d+)'", out, re.IGNORECASE)
     min_sdk = int(min_sdk_match.group(1)) if min_sdk_match else 21
 
     native_match = re.search(r"native-code:\s*(.+)", out)
@@ -94,11 +94,73 @@ def parse_badging(tool_kind: str, tool_path: str, apk_path: Path) -> dict:
     }
 
 
-def extract_best_icon(apk_path: Path, icon_candidates: list, dest_path: Path) -> bool:
+def find_png_via_aapt2_resources(tool_path: str, apk_path: Path, icon_candidates: list) -> list:
+    if not tool_path.endswith("aapt2") and not tool_path.endswith("aapt2.exe"):
+        return []
+    proc = subprocess.run([tool_path, "dump", "resources", str(apk_path)], capture_output=True, text=True, check=False)
+    res_out = proc.stdout or ""
+    if not res_out:
+        return []
+
+    blocks = []
+    cur_res_id = ""
+    cur_files = []
+    for line in res_out.splitlines():
+        m_res = re.match(r"^\s*resource\s+(0x[0-9a-fA-F]+)\s+(.*)$", line)
+        if m_res:
+            if cur_res_id:
+                blocks.append((cur_res_id, cur_files))
+            cur_res_id = m_res.group(1).lower()
+            cur_files = []
+        else:
+            m_file = re.search(r"\(file\)\s+(\S+\.(?:png|webp|xml))", line, re.IGNORECASE)
+            if m_file:
+                cur_files.append((line.lower(), m_file.group(1)))
+    if cur_res_id:
+        blocks.append((cur_res_id, cur_files))
+
+    cand_set = set(icon_candidates)
+    matched_pngs = []
+    for _, files in blocks:
+        if any(f in cand_set for _, f in files):
+            for meta_line, f in files:
+                if f.lower().endswith((".png", ".webp")):
+                    matched_pngs.append((meta_line, f))
+
+    if not matched_pngs:
+        for xml_cand in [c for c in icon_candidates if c.lower().endswith(".xml")]:
+            xml_proc = subprocess.run(
+                [tool_path, "dump", "xmltree", str(apk_path), "--file", xml_cand],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            fg_match = re.search(r"foreground[\s\S]{0,160}?@(0x[0-9a-fA-F]+)", xml_proc.stdout or "")
+            if fg_match:
+                fg_id = fg_match.group(1).lower()
+                for rid, files in blocks:
+                    if rid == fg_id:
+                        for meta_line, f in files:
+                            if f.lower().endswith((".png", ".webp")):
+                                matched_pngs.append((meta_line, f))
+
+    dpi_order = ["xxxhdpi", "xxhdpi", "xhdpi", "hdpi", "mdpi"]
+    def rank(entry):
+        meta_line, _ = entry
+        for idx, d in enumerate(dpi_order):
+            if d in meta_line:
+                return idx
+        return len(dpi_order)
+
+    return [f for _, f in sorted(matched_pngs, key=rank)]
+
+
+def extract_best_icon(tool_path: str, apk_path: Path, icon_candidates: list, dest_path: Path) -> bool:
     try:
+        resolved_candidates = list(icon_candidates) + find_png_via_aapt2_resources(tool_path, apk_path, icon_candidates)
         with zipfile.ZipFile(apk_path, "r") as zf:
             names = zf.namelist()
-            for cand in icon_candidates:
+            for cand in resolved_candidates:
                 if cand in names and cand.lower().endswith((".png", ".webp")):
                     data = zf.read(cand)
                     if data:
@@ -268,7 +330,7 @@ def main():
 
             icon_rel = f"icons/{pkg}.png"
             icon_out = root / icon_rel
-            has_icon = extract_best_icon(primary["localFile"], meta["iconCandidates"], icon_out) or icon_out.exists()
+            has_icon = extract_best_icon(tool_path, primary["localFile"], meta["iconCandidates"], icon_out) or icon_out.exists()
 
             all_abis = sorted({a for e in latest_entries for a in e["meta"]["abis"]})
             category = ov.get("category") or ("Tienda" if pkg == "com.hornero.tvstore" else "TV Apps")
