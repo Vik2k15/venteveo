@@ -1,4 +1,35 @@
 {
   "storeName": "Hornero Store",
-  "apps": []
+  "apps": [
+    {
+      "id": "com.hornero.tvstore",
+      "packageName": "com.hornero.tvstore",
+      "name": "Hornero Store",
+      "versionName": "1.0.1",
+      "versionCode": 10001,
+      "category": "Tienda",
+      "description": "Tienda oficial para actualizar y reinstalar apps en el TV Box sin complicaciones.",
+      "changelog": "",
+      "icon": "",
+      "apkUrl": "https://raw.githubusercontent.com/Vik2k15/venteveo/main/apks/HorneroStore.apk",
+      "sha256": "50707417dab645297db24cdd0a8f0056fb0a5f3dde3188223f946e678b40fd99",
+      "sizeBytes": 2122421,
+      "minSdk": 21,
+      "supportedAbis": [
+        "universal"
+      ],
+      "publishedAt": "",
+      "releaseTag": "",
+      "pinned": true,
+      "variants": [
+        {
+          "abi": "universal",
+          "url": "https://raw.githubusercontent.com/Vik2k15/venteveo/main/apks/HorneroStore.apk",
+          "sha256": "50707417dab645297db24cdd0a8f0056fb0a5f3dde3188223f946e678b40fd99",
+          "sizeBytes": 2122421,
+          "minSdk": 21
+        }
+      ]
+    }
+  ]
 }
