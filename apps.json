@@ -10,11 +10,11 @@
       "category": "Tienda",
       "description": "Tienda oficial para actualizar y reinstalar apps en el TV Box sin complicaciones.",
       "changelog": "",
-      "icon": "",
+      "icon": "icons/com.hornero.tvstore.png",
       "apkUrl": "https://raw.githubusercontent.com/Vik2k15/venteveo/main/apks/HorneroStore.apk",
       "sha256": "50707417dab645297db24cdd0a8f0056fb0a5f3dde3188223f946e678b40fd99",
       "sizeBytes": 2122421,
-      "minSdk": 21,
+      "minSdk": 23,
       "supportedAbis": [
         "universal"
       ],
@@ -27,7 +27,7 @@
           "url": "https://raw.githubusercontent.com/Vik2k15/venteveo/main/apks/HorneroStore.apk",
           "sha256": "50707417dab645297db24cdd0a8f0056fb0a5f3dde3188223f946e678b40fd99",
           "sizeBytes": 2122421,
-          "minSdk": 21
+          "minSdk": 23
         }
       ]
     }
