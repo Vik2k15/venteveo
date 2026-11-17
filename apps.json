@@ -35,6 +35,37 @@
       ]
     },
     {
+      "id": "com.example.maglinktv.net",
+      "packageName": "com.example.maglinktv.net",
+      "name": "MagLink Flow TV",
+      "versionName": "3.0",
+      "versionCode": 30,
+      "category": "TV Apps",
+      "description": "Aplicación MagLink Flow TV lista para TV Box.",
+      "changelog": "",
+      "icon": "icons/com.example.maglinktv.net.png",
+      "apkUrl": "https://github.com/Vik2k15/venteveo/releases/download/apk/MagLink-Flow-TV.apk",
+      "sha256": "dd5ddebf4d3d53c3a346cab54312969dc96b9b7a0cb04ef301d06fb9cce79775",
+      "sizeBytes": 36231225,
+      "minSdk": 23,
+      "supportedAbis": [
+        "arm64-v8a",
+        "armeabi-v7a"
+      ],
+      "publishedAt": "2026-11-17T06:20:21Z",
+      "releaseTag": "apk",
+      "pinned": false,
+      "variants": [
+        {
+          "abi": "universal",
+          "url": "https://github.com/Vik2k15/venteveo/releases/download/apk/MagLink-Flow-TV.apk",
+          "sha256": "dd5ddebf4d3d53c3a346cab54312969dc96b9b7a0cb04ef301d06fb9cce79775",
+          "sizeBytes": 36231225,
+          "minSdk": 23
+        }
+      ]
+    },
+    {
       "id": "com.hornero.tvstore",
       "packageName": "com.hornero.tvstore",
       "name": "Hornero Store",
