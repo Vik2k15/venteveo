@@ -94,6 +94,40 @@
           "minSdk": 23
         }
       ]
+    },
+    {
+      "id": "com.magmaplayer",
+      "packageName": "com.magmaplayer",
+      "name": "Magma",
+      "versionName": "1.0.9",
+      "versionCode": 10,
+      "category": "TV Apps",
+      "description": "Aplicación Magma lista para TV Box.",
+      "changelog": "SI.",
+      "icon": "icons/com.magmaplayer.png",
+      "apkUrl": "https://github.com/Vik2k15/venteveo/releases/download/Magmarin/magma.apk",
+      "sha256": "3e4c793948926fcb3e8b69c21991ab334da1dfff012a9642a3aeda6634237c8e",
+      "sizeBytes": 20399536,
+      "minSdk": 21,
+      "supportedAbis": [
+        "arm64-v8a",
+        "armeabi",
+        "armeabi-v7a",
+        "x86",
+        "x86_64"
+      ],
+      "publishedAt": "2026-11-17T20:14:45Z",
+      "releaseTag": "Magmarin",
+      "pinned": false,
+      "variants": [
+        {
+          "abi": "universal",
+          "url": "https://github.com/Vik2k15/venteveo/releases/download/Magmarin/magma.apk",
+          "sha256": "3e4c793948926fcb3e8b69c21991ab334da1dfff012a9642a3aeda6634237c8e",
+          "sizeBytes": 20399536,
+          "minSdk": 21
+        }
+      ]
     }
   ]
 }
