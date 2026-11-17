@@ -225,7 +225,7 @@ def load_overrides(root: Path) -> dict:
 def main():
     root = Path.cwd()
     repo = os.environ.get("GITHUB_REPOSITORY", "")
-    ref_name = os.environ.get("GITHUB_REF_NAME") or "main"
+    ref_name = os.environ.get("CATALOG_BRANCH") or "main"
     token = os.environ.get("GITHUB_TOKEN", "")
     api_url = os.environ.get("GITHUB_API_URL", "https://api.github.com")
 
