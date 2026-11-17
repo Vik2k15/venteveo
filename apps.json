@@ -2,6 +2,39 @@
   "storeName": "Hornero Store",
   "apps": [
     {
+      "id": "com.android.mgstxNF",
+      "packageName": "com.android.mgstxNF",
+      "name": "Xuper Tv NF",
+      "versionName": "4.35.1",
+      "versionCode": 43501,
+      "category": "TV Apps",
+      "description": "Aplicación Xuper Tv NF lista para TV Box.",
+      "changelog": "",
+      "icon": "icons/com.android.mgstxNF.png",
+      "apkUrl": "https://github.com/Vik2k15/venteveo/releases/download/Hornerin/XuperTv-NF-v4.35.1-ModByNF.apk",
+      "sha256": "0b76f3891d858fa55b9ad6fffef4f47a4cdeee910f036d6b3322287130b9b333",
+      "sizeBytes": 51374730,
+      "minSdk": 19,
+      "supportedAbis": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86",
+        "x86_64"
+      ],
+      "publishedAt": "2026-11-17T05:49:15Z",
+      "releaseTag": "Hornerin",
+      "pinned": false,
+      "variants": [
+        {
+          "abi": "universal",
+          "url": "https://github.com/Vik2k15/venteveo/releases/download/Hornerin/XuperTv-NF-v4.35.1-ModByNF.apk",
+          "sha256": "0b76f3891d858fa55b9ad6fffef4f47a4cdeee910f036d6b3322287130b9b333",
+          "sizeBytes": 51374730,
+          "minSdk": 19
+        }
+      ]
+    },
+    {
       "id": "com.hornero.tvstore",
       "packageName": "com.hornero.tvstore",
       "name": "Hornero Store",
