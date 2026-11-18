@@ -99,6 +99,36 @@
       ]
     },
     {
+      "id": "com.hornero.tv",
+      "packageName": "com.hornero.tv",
+      "name": "Hornero TV",
+      "versionName": "1.0.0",
+      "versionCode": 10000,
+      "category": "TV Apps",
+      "description": "Aplicación Hornero TV lista para TV Box.",
+      "changelog": "",
+      "icon": "icons/com.hornero.tv.png",
+      "apkUrl": "https://raw.githubusercontent.com/Vik2k15/venteveo/main/apks/HorneroTV-v1.0.0.apk",
+      "sha256": "32a31ad86c0a1171c60a8b4799815e4248605ac651de1088f248c43ab777a33b",
+      "sizeBytes": 3002859,
+      "minSdk": 21,
+      "supportedAbis": [
+        "universal"
+      ],
+      "publishedAt": "",
+      "releaseTag": "",
+      "pinned": false,
+      "variants": [
+        {
+          "abi": "universal",
+          "url": "https://raw.githubusercontent.com/Vik2k15/venteveo/main/apks/HorneroTV-v1.0.0.apk",
+          "sha256": "32a31ad86c0a1171c60a8b4799815e4248605ac651de1088f248c43ab777a33b",
+          "sizeBytes": 3002859,
+          "minSdk": 21
+        }
+      ]
+    },
+    {
       "id": "com.hornero.tvstore",
       "packageName": "com.hornero.tvstore",
       "name": "Hornero Store",
